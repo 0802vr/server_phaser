@@ -10,7 +10,7 @@
     "file.lastUsedOpenFilter": "Все файлы (*)",
     "fileStates": {
         "": {
-            "scaleInDock": 0.33,
+            "scaleInDock": 4,
             "scaleInEditor": 1
         },
         "durotar.json": {
@@ -83,11 +83,11 @@
             "scaleInEditor": 3
         },
         "pix.json": {
-            "scale": 0.33,
+            "scale": 0.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 1006.0606060606062,
-                "y": 510.60606060606074
+                "x": 736,
+                "y": 731
             }
         },
         "pix.json#Sheet": {
@@ -102,6 +102,9 @@
         },
         "pix.json#m7": {
             "scaleInDock": 0.5
+        },
+        "pix.json#map": {
+            "scaleInDock": 1
         },
         "pix.json#move": {
             "scaleInDock": 4
@@ -145,10 +148,10 @@
             "scaleInEditor": 1
         }
     },
-    "last.imagePath": "C:/Users/Dell/dev/pixel/src/assets/characters",
+    "last.imagePath": "C:/Users/Dell/dev/pixel/src/assets/player_interface/new",
     "last.worldFilePath": "C:/Users/Dell/dev/rpg-course/src/assets",
     "loadedWorlds": [
-        "C:/Users/Dell/dev/rpg-course/src/assets/town.world"
+        "C:/Users/Dell/dev/rpg-course/src/assets/pix2.world"
     ],
     "map.lastUsedFormat": "json",
     "map.orientation": null,
@@ -172,7 +175,7 @@
     "tileset.margin": 0,
     "tileset.spacing": 0,
     "tileset.tileSize": {
-        "height": 300,
-        "width": 1000
+        "height": 64,
+        "width": 64
     }
 }
