@@ -32,7 +32,7 @@ io.on('connection', function (socket) {
   players[socket.id] = {
     rotation: 0,
     x: Math.floor(Math.random() * 700) + 50,
-    y: 1350,
+    y: 2350,
     playerId: socket.id,
     team:1
   };
