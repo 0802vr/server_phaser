@@ -31,8 +31,8 @@ io.on('connection', function (socket) {
   // создание нового игрока и добавление го в объект players
   players[socket.id] = {
     rotation: 0,
-    x: Math.floor(Math.random() * 700) + 50,
-    y: 1350,
+    x: Math.floor(Math.random() * 700) + 50 ,
+    y:  650,
     playerId: socket.id,
     team:1
   };
