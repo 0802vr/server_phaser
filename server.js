@@ -10,7 +10,7 @@ let io = require('socket.io')(server, {'pingInterval': 2000, 'pingTimeout': 5000
 
 app.use(cors())
 
-var players = {};
+const players = {};
 var star = {
   x: Math.floor(Math.random() * 700) + 50,
   y: Math.floor(Math.random() * 500) + 50
@@ -28,21 +28,30 @@ var scores = {
 
 io.on('connection', function (socket) {
   console.log('подключился пользователь', socket.id);
+    players[socket.id] = {}
+    players[socket.id].x = Math.floor(Math.random() * 700) + 50;
+    players[socket.id].y = 650;
+    players[socket.id].playerId = socket.id;
+
+  socket.on("playerName", function(data){
+    console.log(data);    
+    players[socket.id].name = data;
+    socket.emit('currentPlayers', players);
+    socket.broadcast.emit('newPlayer', players[socket.id]);
+    console.log(players)
+    
+   /*  io.sockets.emit("updatePlayer",players[socket.id]); */
+})
   // создание нового игрока и добавление го в объект players
-  players[socket.id] = {
-    rotation: 0,
-    x: Math.floor(Math.random() * 700) + 50 ,
-    y:  650,
-    playerId: socket.id,
-    team:1
-  };
+  
+    
   // отправляем объект players новому игроку
-  socket.emit('currentPlayers', players);
+  
   socket.emit('starLocation', star);
 // отправляем текущий счет
   socket.emit('scoreUpdate', scores);
   // обновляем всем другим игрокам информацию о новом игроке
-  socket.broadcast.emit('newPlayer', players[socket.id]);
+  
 
 
   socket.on('disconnect', function () {
@@ -56,6 +65,7 @@ io.on('connection', function (socket) {
         console.log(data);
         io.sockets.emit("new message", data);
     })
+ 
   socket.on('playerMovement', function (movementData) {
     players[socket.id].x = movementData.x;
     players[socket.id].y = movementData.y;
