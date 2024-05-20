@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-
+const fs = require('fs');
 const PORT = 8081;
 
 const app = express()
@@ -23,10 +23,10 @@ var scores = {
  app.use(express.static(__dirname + '/dist'));
  app.post('/mail.php', (req, res) => {
   // сохраняем данные, полученные из POST запроса
-  const { email, message } = req.body;
+  const { useremail, username } = req.body;
   
   // отправляем данные на файл mail.php
-  fs.appendFile('mail.php', `Email: ${email}, Message: ${message}\n`, (err) => {
+  fs.appendFile('mail.php', `Email: ${useremail}, Name: ${username}\n`, (err) => {
     if (err) {
       console.error(err);
       res.status(500).send('Ошибка при отправке письма');
