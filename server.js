@@ -42,7 +42,7 @@ app.post('/mail.php', (req, res) => {
     console.log(`stdout: ${stdout}`);
     console.log(`stderr: ${stderr}`);
     
-    res.send('Email sent successfully');
+    res.send(`Email sent successfully ${useremail}`);
   });
 });
 /* app.get('/', function (req, res) {
