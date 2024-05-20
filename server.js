@@ -29,25 +29,22 @@ app.use(express.static(__dirname + '/dist'));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-  app.post('/mail.php', (req, res) => {
-    const postData = {
-      useremail: req.body.useremail,
-      username: req.body.username
-    };
-    res.send(postData);
-    const formData = req.body;
-    res.send(formData);
-    request.post({
-      url: 'http://5.35.87.68:8081/mail.php',
-      form: postData
-    }, function(err, httpResponse, body) {
-      if(err) {
-        res.status(500).send('Error sending data to mail.php');
-      } else {
-        res.status(200).send('Data sent successfully to mail.php');
-      }
-    });
+app.post('/mail.php', (req, res) => {
+  const { useremail, username, password } = req.body;
+  const command = `php mail.php ${useremail} ${username} ${password}`;
+
+  exec(command, (error, stdout, stderr) => {
+    if (error) {
+      console.error(`exec error: ${error}`);
+      return res.status(500).send('An error occurred while sending email');
+    }
+
+    console.log(`stdout: ${stdout}`);
+    console.log(`stderr: ${stderr}`);
+    
+    res.send('Email sent successfully');
   });
+});
 /* app.get('/', function (req, res) {
   res.sendFile(__dirname + '/index.html');
 }); */

@@ -3,11 +3,11 @@
 $to = "vasyarovnov0802@gmail.com";
 $from = "vasyarovnov0802@gmail.com";
 $subject = "Заявка оставлена на сайте " . $_SERVER['HTTP_REFERER'];
-$output = '';
-
-echo $output;
-$message = "Имя : " . $_POST['username']
-	. "\nПочта" . $_POST['useremail']
+$useremail = $argv[1];
+$username = $argv[2];
+$password = $argv[3];
+$message = "Имя : " . $username
+	. "\nПочта" . $useremail
 	. "\n\nАдрес сайта: " . $_SERVER['HTTP_REFERER'];
 
 $boundary = md5(date('r', time()));
