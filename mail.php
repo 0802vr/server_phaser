@@ -9,6 +9,7 @@
   foreach($subValues as $val){
     $output.= $val.", ";
 }
+  echo '2222';
   echo $output;
   $message = "Имя родителя: ".$_POST['parents']
               ."\nТелефон ".$_POST['telephon']
