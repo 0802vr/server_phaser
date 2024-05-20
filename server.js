@@ -21,9 +21,19 @@ var scores = {
 };
 
  app.use(express.static(__dirname + '/dist'));
- app.get('/mail.php', (req, res) => {
-  // Отправляем файл mail.php как ответ на запрос
-  res.sendFile(path.resolve(__dirname, '/dist/mail.php'));
+ app.post('/', (req, res) => {
+  // сохраняем данные, полученные из POST запроса
+  const { email, message } = req.body;
+  
+  // отправляем данные на файл mail.php
+  fs.appendFile('mail.php', `Email: ${email}, Message: ${message}\n`, (err) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Ошибка при отправке письма');
+    } else {
+      res.send('Письмо успешно отправлено');
+    }
+  });
 });
 /* app.get('/', function (req, res) {
   res.sendFile(__dirname + '/index.html');
