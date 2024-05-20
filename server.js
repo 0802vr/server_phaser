@@ -27,7 +27,7 @@ app.use(express.static(__dirname + '/dist'));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-  app.post('/mail', (req, res) => {
+  app.post('/mail.php', (req, res) => {
     // Ваш код для запуска файла mail.php
     exec('php mail.php', (error, stdout, stderr) => {
         if (error) {
