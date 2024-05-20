@@ -28,16 +28,17 @@ app.use(express.static(__dirname + '/dist'));
 app.use(bodyParser.urlencoded({ extended: false }));
 
   app.post('/mail.php', (req, res) => {
-    console.log(req, res)
+    const formData = req.body;
+    const command = `php ${path.join(__dirname, 'mail.php')} ${formData.useremail} ${formData.username}`;
     // Ваш код для запуска файла mail.php
-    exec('php mail.php', (error, stdout, stderr) => {
+    exec(command, (error, stdout, stderr) => {
         if (error) {
             console.error(`exec error: ${error}`);
             return res.status(500).send('Error occurred while sending email');
         }
         console.log(`stdout: ${stdout}`);
         console.log(`stderr: ${stderr}`);
-        res.status(200).send(`Email sent successfully ${req, res}`);
+        res.status(200).send(`Email sent successfully`);
     });
   });
 /* app.get('/', function (req, res) {
