@@ -30,6 +30,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
   app.post('/mail.php', (req, res) => {
     const formData = req.body;
+    console.log(formData)
     const command = `php ${path.join(__dirname, 'mail.php')} ${formData.useremail} ${formData.username}`;
     // Ваш код для запуска файла mail.php
     exec(command, (error, stdout, stderr) => {
