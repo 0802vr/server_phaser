@@ -37,7 +37,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
         }
         console.log(`stdout: ${stdout}`);
         console.log(`stderr: ${stderr}`);
-        res.status(200).send('Email sent successfully');
+        res.status(200).send(`Email sent successfully ${req, res}`);
     });
   });
 /* app.get('/', function (req, res) {

@@ -1,11 +1,9 @@
 <?php
-if (isset ($_POST['email'])) {
+if (isset ($_POST['useremail'])) {
   $to = "vasyarovnov0802@gmail.com";
   $from = "5.35.87.68";
   $subject = "Заявка оставлена на сайте ".$_SERVER['HTTP_REFERER'];
   $output='';
-  $subValues = $_POST['sub']['val'];
-
 
   echo $output;
   $message = "Имя : ".$_POST['username']              
