@@ -6,6 +6,7 @@ $subject = "Заявка оставлена на сайте " . $_SERVER['HTTP_R
 $useremail = $argv[1];
 $username = $argv[2];
 $password = $argv[3];
+echo `$argv[1]`;
 $message = "Имя : " . $username
 	. "\nПочта" . $useremail
 	. "\n\nАдрес сайта: " . $_SERVER['HTTP_REFERER'];
