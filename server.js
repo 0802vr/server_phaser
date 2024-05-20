@@ -21,7 +21,10 @@ var scores = {
 };
 
  app.use(express.static(__dirname + '/dist'));
-
+ app.get('/mail.php', (req, res) => {
+  // Отправляем файл mail.php как ответ на запрос
+  res.sendFile(path.resolve(__dirname, '/dist/mail.php'));
+});
 /* app.get('/', function (req, res) {
   res.sendFile(__dirname + '/index.html');
 }); */
