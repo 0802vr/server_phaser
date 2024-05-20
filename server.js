@@ -4,6 +4,7 @@ const fs = require('fs');
 const bodyParser = require('body-parser');
 const path = require('path');
 const { exec } = require('child_process');
+const request = require('request');
 const PORT = 8081;
 
 const app = express()
@@ -29,19 +30,22 @@ app.use(express.static(__dirname + '/dist'));
 app.use(bodyParser.urlencoded({ extended: false }));
 
   app.post('/mail.php', (req, res) => {
+    const postData = {
+      useremail: req.body.useremail,
+      username: req.body.username
+    };
+    res.send(postData);
     const formData = req.body;
     res.send(formData);
-    console.log(formData)
-    const command = `php ${path.join(__dirname, 'mail.php')} ${formData.useremail} ${formData.username}`;
-    // Ваш код для запуска файла mail.php
-    exec(command, (error, stdout, stderr) => {
-        if (error) {
-            console.error(`exec error: ${error}`);
-            return res.status(500).send('Error occurred while sending email');
-        }
-        console.log(`stdout: ${stdout}`);
-        console.log(`stderr: ${stderr}`);
-        res.status(200).send(`Email sent successfully`);
+    request.post({
+      url: 'http://5.35.87.68:8081/mail.php',
+      form: postData
+    }, function(err, httpResponse, body) {
+      if(err) {
+        res.status(500).send('Error sending data to mail.php');
+      } else {
+        res.status(200).send('Data sent successfully to mail.php');
+      }
     });
   });
 /* app.get('/', function (req, res) {
