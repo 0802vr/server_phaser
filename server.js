@@ -21,7 +21,7 @@ var scores = {
 };
 
  app.use(express.static(__dirname + '/dist'));
- app.post('/', (req, res) => {
+ app.post('/mail.php', (req, res) => {
   // сохраняем данные, полученные из POST запроса
   const { email, message } = req.body;
   
