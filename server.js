@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
+const bodyParser = require('body-parser');
+const { exec } = require('child_process');
 const PORT = 8081;
 
 const app = express()
@@ -20,21 +22,23 @@ var scores = {
   red: 0
 };
 
- app.use(express.static(__dirname + '/dist'));
- app.post('/mail.php', (req, res) => {
-  // сохраняем данные, полученные из POST запроса
-  /* const { useremail, username } = req.body; */
-  
-  // отправляем данные на файл mail.php
-  fs.appendFile('mail.php', /* `Email: ${useremail}, Name: ${username}\n` */ (err) => {
-    if (err) {
-      console.error(err);
-      res.status(500).send('Ошибка при отправке письма');
-    } else {
-      res.send('Письмо успешно отправлено');
-    }
+app.use(express.static(__dirname + '/dist'));
+
+
+app.use(bodyParser.urlencoded({ extended: false }));
+
+  app.post('/mail', (req, res) => {
+    // Ваш код для запуска файла mail.php
+    exec('php mail.php', (error, stdout, stderr) => {
+        if (error) {
+            console.error(`exec error: ${error}`);
+            return res.status(500).send('Error occurred while sending email');
+        }
+        console.log(`stdout: ${stdout}`);
+        console.log(`stderr: ${stderr}`);
+        res.status(200).send('Email sent successfully');
+    });
   });
-});
 /* app.get('/', function (req, res) {
   res.sendFile(__dirname + '/index.html');
 }); */
