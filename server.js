@@ -6,10 +6,10 @@ const bodyParser = require('body-parser');
 const { exec } = require('child_process');
 /* const request = require('request'); */
 const PORT = 8081;
-const fs = require('fs');
-const http = require('http');
+/* const fs = require('fs');
+const http = require('http'); */
 const winston = require('winston');
-const nodemailer = require('nodemailer');
+/* const nodemailer = require('nodemailer'); */
 
 const app = express()
 var server = require("http").createServer(app);
@@ -32,7 +32,7 @@ app.use(express.static(__dirname + '/dist'));
 
 
 
-app.use(bodyParser.urlencoded({ extended: false }));
+/* app.use(bodyParser.urlencoded({ extended: false }));
 
 
 let transporter = nodemailer.createTransport({
@@ -73,7 +73,7 @@ app.post('/mail.php', async (req, res) => {
     console.error(`stderr: ${stderr}`);
     res.send(`Email sent successfully ${formData.useremail} ${formData.username}`);
   });
-});
+}); */
 /* app.get('/', function (req, res) {
   res.sendFile(__dirname + '/index.html');
 }); */
