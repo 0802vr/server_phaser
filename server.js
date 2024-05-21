@@ -8,7 +8,7 @@ const { exec } = require('child_process');
 const PORT = 8081;
 const fs = require('fs');
 const http = require('http');
-
+const winston = require('winston');
  
 
 
@@ -112,7 +112,15 @@ io.on('connection', function (socket) {
     io.emit('scoreUpdate', scores);
   });
 });
-
+// Создание нового логгера
+const logger = winston.createLogger({
+  level: 'info',
+  format: winston.format.json(),
+  transports: [
+    new winston.transports.File({ filename: 'error.log', level: 'error' }),
+    new winston.transports.File({ filename: 'combined.log' }),
+  ],
+});
 
 server.listen(PORT, function () {
   console.log(`Прослушиваем ${server.address().port}`);

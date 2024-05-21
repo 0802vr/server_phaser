@@ -1,5 +1,5 @@
 <?php
-if (isset ($_POST['useremail'])) {
+
   $useremail = $argv[1];
   $username = $argv[2];
   $to = "vasyarovnov0802@gmail.com";
@@ -49,5 +49,5 @@ $attachment";
   } else {
     echo 'Извините, письмо не отправлено. Размер всех файлов превышает 10 МБ.';
   }
-}
+
 ?>
