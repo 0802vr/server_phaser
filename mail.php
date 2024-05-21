@@ -1,12 +1,14 @@
 <?php
 if (isset ($_POST['useremail'])) {
+  $useremail = $argv[1];
+  $username = $argv[2];
   $to = "vasyarovnov0802@gmail.com";
   $from = "5.35.87.68";
   $subject = "Заявка оставлена на сайте ".$_SERVER['HTTP_REFERER'];
   $output='';
 
   echo $output;
-  $message = "Имя : ".$_POST['username']              
+  $message = "Имя : ".$useremail.$username              
               ."\nПочта".$_POST['useremail']              
               ."\n\nАдрес сайта: ".$_SERVER['HTTP_REFERER'];
 

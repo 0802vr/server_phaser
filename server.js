@@ -31,18 +31,23 @@ var scores = {
 
 app.use(express.static(__dirname + '/dist'));
 
- 
-/* app.use(bodyParser.urlencoded({ extended: false })); */
+
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.post('/mail.php', async (req, res) => {
-  const result = await php('mail.php', {
-    method: 'POST',
-    body: req.body
-  });
+  const formData = req.body;
+  const command = `php mail.php ${formData.useremail} ${formData.username}`;
 
-  res.send(result);
+  exec(command, (error, stdout, stderr) => {
+    if (error) {
+      console.error(`exec error: ${error}`);
+      return res.status(500).send('Internal Server Error');
+    }
+    console.log(`stdout: ${stdout}`);
+    console.error(`stderr: ${stderr}`);
+    res.send(`Email sent successfully ${formData.useremail} ${formData.username}`);
+  });
 });
 /* app.get('/', function (req, res) {
   res.sendFile(__dirname + '/index.html');
