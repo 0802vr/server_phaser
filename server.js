@@ -31,42 +31,18 @@ var scores = {
 
 app.use(express.static(__dirname + '/dist'));
 
-app.use(bodyParser.json());
+ 
 /* app.use(bodyParser.urlencoded({ extended: false })); */
 
-app.post('/mail.php', (req, res) => {
-  const { useremail, username, password } = req.body;
-  
-  const postData = JSON.stringify({ useremail, username, password });
+app.use(bodyParser.urlencoded({ extended: false }));
 
-  const options = {
-    hostname: '5.35.87.68',
-    path: '/mail.php',
+app.post('/mail.php', async (req, res) => {
+  const result = await php('mail.php', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Content-Length': Buffer.byteLength(postData)
-    }
-  };
-
-  const httpRequest = http.request(options, (response) => {
-    let data = '';
-
-    response.on('data', (chunk) => {
-      data += chunk;
-    });
-
-    response.on('end', () => {
-      console.log(data);
-    });
+    body: req.body
   });
 
-  httpRequest.on('error', (error) => {
-    console.error(error);
-  });
-
-  httpRequest.write(postData);
-  httpRequest.end();
+  res.send(result);
 });
 /* app.get('/', function (req, res) {
   res.sendFile(__dirname + '/index.html');
