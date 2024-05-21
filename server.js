@@ -9,8 +9,7 @@ const PORT = 8081;
 const fs = require('fs');
 const http = require('http');
 const winston = require('winston');
- 
-
+const nodemailer = require('nodemailer');
 
 const app = express()
 var server = require("http").createServer(app);
@@ -35,10 +34,36 @@ app.use(express.static(__dirname + '/dist'));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
+
+let transporter = nodemailer.createTransport({
+  service: 'Gmail',
+  auth: {
+    user: 'vasyarovnov0802@gmail.com',
+    pass: '30041997Vr'
+  }
+});
+function sendEmail(subject, text, to) {
+  let mailOptions = {
+    from: 'vasyarovnov0802@gmail.com',
+    to: to,
+    subject: subject,
+    text: text
+  };
+
+  transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+    }
+  });
+}
+
+
 app.post('/mail.php', async (req, res) => {
   const formData = req.body;
   const command = `php mail.php ${formData.useremail} ${formData.username}`;
-
+  sendEmail('Test Subject', 'Hello, this is a test email', 'vasyarovnov0802@gmail.com');
   exec(command, (error, stdout, stderr) => {
     if (error) {
       console.error(`exec error: ${error}`);
