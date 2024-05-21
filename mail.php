@@ -1,22 +1,13 @@
 <?php
-
+if (isset ($_POST['useremail'])) {
   $to = "vasyarovnov0802@gmail.com";
-  $from = "vr@team.anlandia";
+  $from = "5.35.87.68";
   $subject = "Заявка оставлена на сайте ".$_SERVER['HTTP_REFERER'];
   $output='';
-  $subValues = $_POST['sub']['val'];
 
-  foreach($subValues as $val){
-    $output.= $val.", ";
-}
-  echo '2222';
   echo $output;
-  $message = "Имя родителя: ".$_POST['parents']
-              ."\nТелефон ".$_POST['telephon']
-              ."\nВозраст ребенка ".$_POST['age']
-              ."\nПочта".$_POST['email']
-              ."\nПрограмма обучения".$_POST['prog']
-              ."\nПредметы ".$output
+  $message = "Имя : ".$_POST['username']              
+              ."\nПочта".$_POST['useremail']              
               ."\n\nАдрес сайта: ".$_SERVER['HTTP_REFERER'];
 
   $boundary = md5(date('r', time()));
@@ -56,5 +47,5 @@ $attachment";
   } else {
     echo 'Извините, письмо не отправлено. Размер всех файлов превышает 10 МБ.';
   }
-
+}
 ?>
