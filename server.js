@@ -81,7 +81,7 @@ app.post('/mail.php', async (req, res) => {
 io.on('connection', function (socket) {
   console.log('подключился пользователь', socket.id);
     players[socket.id] = {}
-    players[socket.id].x = Math.floor(Math.random() * 700) + 50;
+    players[socket.id].x = 700;
     players[socket.id].y = 650;
     players[socket.id].playerId = socket.id;
 
