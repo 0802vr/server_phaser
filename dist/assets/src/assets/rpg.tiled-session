@@ -1,0 +1,181 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "pix.json",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "file.lastUsedOpenFilter": "Все файлы (*)",
+    "fileStates": {
+        "": {
+            "scaleInDock": 4,
+            "scaleInEditor": 1
+        },
+        "durotar.json": {
+            "expandedGroupLayers": [
+                3
+            ],
+            "scale": 0.5,
+            "selectedLayer": 8,
+            "viewCenter": {
+                "x": 354,
+                "y": 657
+            }
+        },
+        "durotar.json#alliance": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "durotar.json#dungeon-16-16": {
+            "scaleInDock": 1,
+            "scaleInEditor": 3
+        },
+        "durotar.json#gates": {
+            "scaleInDock": 1
+        },
+        "durotar.json#knigth": {
+            "scaleInDock": 2,
+            "scaleInEditor": 11
+        },
+        "durotar.json#map2": {
+            "scaleInDock": 1
+        },
+        "durotar.json#tiles": {
+            "dynamicWrapping": false,
+            "scaleInDock": 0.33,
+            "scaleInEditor": 1
+        },
+        "map2.json": {
+            "scale": 1,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 376,
+                "y": 232.5
+            }
+        },
+        "map2.json#main": {
+            "scaleInDock": 3
+        },
+        "map2.json#map2": {
+            "scaleInDock": 1
+        },
+        "map3.json": {
+            "scale": 1.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 905.6666666666667,
+                "y": 340.99999999999994
+            }
+        },
+        "map3.json#dungeon-16-16": {
+            "scaleInDock": 1
+        },
+        "map3.json#durotar": {
+            "scaleInDock": 1
+        },
+        "map3.json#gates": {
+            "scaleInDock": 1
+        },
+        "map3.json#map2": {
+            "scaleInDock": 1,
+            "scaleInEditor": 3
+        },
+        "pix.json": {
+            "scale": 0.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 736,
+                "y": 731
+            }
+        },
+        "pix.json#Sheet": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "pix.json#m2": {
+            "scaleInDock": 1
+        },
+        "pix.json#m5": {
+            "scaleInDock": 0.33
+        },
+        "pix.json#m7": {
+            "scaleInDock": 0.5
+        },
+        "pix.json#map": {
+            "scaleInDock": 1
+        },
+        "pix.json#move": {
+            "scaleInDock": 4
+        },
+        "pix.json#move-Sheet": {
+            "scaleInEditor": 1
+        },
+        "pix.json#road": {
+            "scaleInDock": 1
+        },
+        "town.json": {
+            "scale": 1.0548958333333331,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 475.87637009973344,
+                "y": 319.93680260689257
+            }
+        },
+        "town.json#map2": {
+            "scaleInDock": 1
+        },
+        "town.tmj": {
+            "expandedObjectLayers": [
+                3,
+                2
+            ],
+            "scale": 0.75,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 417.33333333333337,
+                "y": 416.6666666666667
+            }
+        },
+        "town.tmj#map2": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "town.tsj": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "last.imagePath": "C:/Users/Dell/dev/pixel/src/assets/player_interface/new",
+    "last.worldFilePath": "C:/Users/Dell/dev/rpg-course/src/assets",
+    "loadedWorlds": [
+        "C:/Users/Dell/dev/rpg-course/src/assets/pix2.world"
+    ],
+    "map.lastUsedFormat": "json",
+    "map.orientation": null,
+    "map.width": 40,
+    "openFiles": [
+        "pix.json"
+    ],
+    "project": "rpg.tiled-project",
+    "property.type": "bool",
+    "recentFiles": [
+        "pix.json",
+        "durotar.json",
+        "map3.json",
+        "map2.json",
+        "town.json",
+        "town.tmj",
+        "town.tsj"
+    ],
+    "tileset.embedInMap": true,
+    "tileset.lastUsedFormat": "json",
+    "tileset.margin": 0,
+    "tileset.spacing": 0,
+    "tileset.tileSize": {
+        "height": 64,
+        "width": 64
+    }
+}
