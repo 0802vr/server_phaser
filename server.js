@@ -90,7 +90,7 @@ io.on('connection', function (socket) {
     players[socket.id].name = data[0];
     players[socket.id].anim = data[1];
     socket.emit('currentPlayers', players);
-    socket.broadcast.emit('newPlayer', players[socket.id]);
+    socket.broadcast.emit('newPlayer', players[socket.id]); 
     console.log(players)
     
    /*  io.sockets.emit("updatePlayer",players[socket.id]); */
