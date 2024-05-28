@@ -1,0 +1,14 @@
+{ "columns":11,
+ "image":"player_interface\/new\/map.png",
+ "imageheight":704,
+ "imagewidth":704,
+ "margin":0,
+ "name":"map",
+ "spacing":0,
+ "tilecount":121,
+ "tiledversion":"1.10.2",
+ "tileheight":64,
+ "tilewidth":64,
+ "type":"tileset",
+ "version":"1.10"
+}
