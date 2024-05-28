@@ -87,7 +87,8 @@ io.on('connection', function (socket) {
 
   socket.on("playerName", function(data){
     console.log(data);    
-    players[socket.id].name = data;
+    players[socket.id].name = data[0];
+    players[socket.id].anim = data[1];
     socket.emit('currentPlayers', players);
     socket.broadcast.emit('newPlayer', players[socket.id]);
     console.log(players)
